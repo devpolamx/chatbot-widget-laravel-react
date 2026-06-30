@@ -4,6 +4,12 @@ Este repositorio contiene un paquete completo, listo para producción, para inte
 
 El sistema está optimizado para conectarse de manera fluida con la API de **Google Gemini** (usando por defecto `gemini-2.5-flash`) y cuenta con características avanzadas de persistencia de datos y seguridad preventiva en tiempo real.
 
+## Instalar
+
+```bash
+git clone https://github.com/devpolamx/chatbot-widget-laravel-react.git
+```
+
 ---
 
 ## ☕ Apóyame
