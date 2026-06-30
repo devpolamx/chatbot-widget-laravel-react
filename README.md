@@ -11,8 +11,8 @@ El sistema está optimizado para conectarse de manera fluida con la API de **Goo
 - 💬 **Widget Flotante Premium**: Interfaz moderna con animaciones fluidas, indicador de escritura ("typing indicator") y modo oscuro integrado.
 - 🧠 **Motor de IA (Google Gemini)**: Conexión optimizada con la API oficial de Gemini para respuestas rápidas y contextuales.
 - 🛡️ **Seguridad y Prevención de Abusos**: Servicio `ChatSecurityService` integrado que intercepta el mensaje del usuario antes de enviarlo a la API para detectar:
-  - Intentos de *Jailbreak* o alteración de instrucciones del sistema.
-  - Intentos de extracción de datos o *Inyección SQL*.
+  - Intentos de _Jailbreak_ o alteración de instrucciones del sistema.
+  - Intentos de extracción de datos o _Inyección SQL_.
   - Generación de contenido restringido o pesado.
 - 💾 **Historial de Conversación Persistente**: Los mensajes se guardan en base de datos y se limitan de forma inteligente para proveer el contexto correcto a la IA sin exceder límites de tokens.
 - 📋 **Auditoría de Incidencias**: Registro automático de intentos de vulneración en la tabla `chat_incidencias` para auditoría y posible baneo de usuarios malintencionados.
@@ -41,6 +41,7 @@ El paquete está diseñado para ser copiado directamente en la estructura de dir
 ## ⚙️ Requisitos Previos
 
 Asegúrate de contar con los siguientes elementos antes de comenzar con la integración:
+
 - **Backend**: Laravel 10.x o superior.
 - **Frontend**: React 18.x, Tailwind CSS v3 o superior.
 - **Dependencias NPM**: `lucide-react`, `axios`, `@inertiajs/react`.
@@ -92,7 +93,7 @@ return [
 ### Paso 4: Agregar el Controlador de Laravel
 
 1. Copia `backend/ChatController.php` a [app/Http/Controllers/ChatController.php](file:///d:/www/chatbot-widget-ia/backend/ChatController.php).
-2. Modifica el espacio de nombres (`namespace`) y los *imports* si la estructura de tu proyecto difiere del estándar.
+2. Modifica el espacio de nombres (`namespace`) y los _imports_ si la estructura de tu proyecto difiere del estándar.
 
 ### Paso 5: Registrar las Rutas del Chat
 
@@ -128,15 +129,15 @@ Route::middleware(['auth'])->group(function () {
 import FloatingChatWidget from "@/Components/FloatingChatWidget";
 
 export default function AuthenticatedLayout({ children }) {
-    return (
-        <div className="min-h-screen bg-gray-100 dark:bg-zinc-900">
-            {/* ... contenido principal de tu aplicación ... */}
-            <main>{children}</main>
+  return (
+    <div className="min-h-screen bg-gray-100 dark:bg-zinc-900">
+      {/* ... contenido principal de tu aplicación ... */}
+      <main>{children}</main>
 
-            {/* Widget del Chatbot IA */}
-            <FloatingChatWidget />
-        </div>
-    );
+      {/* Widget del Chatbot IA */}
+      <FloatingChatWidget />
+    </div>
+  );
 }
 ```
 
@@ -145,6 +146,7 @@ export default function AuthenticatedLayout({ children }) {
 ## 🛠️ Opciones de Personalización
 
 ### 1. Cambiar las Instrucciones del Sistema (System Instructions)
+
 Puedes modificar el comportamiento de la IA cambiando la constante `SYSTEM_INSTRUCTION` al inicio de [ChatController.php](file:///d:/www/chatbot-widget-ia/backend/ChatController.php#L18-L23):
 
 ```php
@@ -155,11 +157,14 @@ INST;
 ```
 
 ### 2. Modificar Reglas de Seguridad
+
 El archivo [ChatSecurityService.php](file:///d:/www/chatbot-widget-ia/backend/ChatSecurityService.php) contiene expresiones regulares para filtrar comportamientos. Si deseas flexibilizar o endurecer las restricciones de entrada de los usuarios, edita los arrays en dicho archivo:
+
 - `$jailbreak`: Para prevenir inyecciones de prompts ("olvida tus instrucciones", "actúa como...", etc.).
 - `$datosPatterns`: Filtros básicos de prevención de inyección SQL y acceso a tablas internas del sistema.
 
 ### 3. Personalizar la Estética del Widget
+
 El widget tiene estilos basados en Tailwind CSS y utiliza un degradado de rosa a violeta (`bg-gradient-to-r from-[#D4006A] to-[#9B00A0]`). Puedes adaptar fácilmente los colores editando las clases de Tailwind en [FloatingChatWidget.tsx](file:///d:/www/chatbot-widget-ia/frontend/FloatingChatWidget.tsx) para que coincidan con la paleta de colores de tu marca.
 
 ---
@@ -167,6 +172,7 @@ El widget tiene estilos basados en Tailwind CSS y utiliza un degradado de rosa a
 ## 🛡️ Seguridad y Auditoría
 
 Cada vez que un usuario ingresa una frase catalogada como sospechosa por `ChatSecurityService`, la aplicación realiza el siguiente flujo:
+
 1. Bloquea el envío a la API de Gemini para ahorrar tokens y proteger el sistema.
 2. Registra la incidencia en la tabla `chat_incidencias` almacenando el ID del usuario, el texto ofensivo o sospechoso y el tipo de violación (`jailbreak`, `extraccion_datos`, `generacion_restringida`).
 3. Retorna un mensaje de advertencia amigable al usuario en la interfaz del chat.
@@ -175,7 +181,19 @@ Esto te permite monitorear de cerca el uso del chatbot y detectar intentos malic
 
 ---
 
+## ☕ Apoya este Proyecto
+
+Si este paquete te ha sido útil y te ha ayudado a ahorrar tiempo de desarrollo, considera apoyar su mantenimiento continuo. ¡Cualquier contribución es muy apreciada!
+
+## ☕ Apóyame
+
+Si este proyecto te fue útil y quieres apoyar mi trabajo:
+
+- ❤️ GitHub Sponsors: https://github.com/sponsors/devpolamx
+- ☕ Invítame un café: https://www.paypal.me/poladevmx
+
+---
+
 ## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT. Siéntete libre de clonarlo, modificarlo y usarlo de manera personal o comercial. ¡Las contribuciones son bienvenidas!
-
