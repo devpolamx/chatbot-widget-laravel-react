@@ -1,4 +1,9 @@
 # Configuración de patrocinio para GitHub
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository
 
-custom: ['https://paypal.me/TU_USUARIO_PAYPAL']
+custom: ["https://www.paypal.me/poladevmx"]
+
+#links de patrocinio de github https://github.com/sponsors/devpolamx
+custom: ["https://github.com/sponsors/devpolamx"]
+
+
