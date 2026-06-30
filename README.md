@@ -6,6 +6,15 @@ El sistema está optimizado para conectarse de manera fluida con la API de **Goo
 
 ---
 
+## ☕ Apóyame
+
+Si este proyecto te fue útil y quieres apoyar mi trabajo:
+
+- ❤️ GitHub Sponsors: https://github.com/sponsors/devpolamx
+- ☕ Invítame un café: https://www.paypal.me/poladevmx
+
+---
+
 ## 🌟 Características Clave
 
 - 💬 **Widget Flotante Premium**: Interfaz moderna con animaciones fluidas, indicador de escritura ("typing indicator") y modo oscuro integrado.
